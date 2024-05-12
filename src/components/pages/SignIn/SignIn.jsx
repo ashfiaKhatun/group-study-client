@@ -9,7 +9,7 @@ import { AuthContext } from "../../../provider/AuthProvider";
 
 
 const SignIn = () => {
-    const { signInUser, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const { signInUser, googleSignIn } = useContext(AuthContext);
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -52,22 +52,7 @@ const SignIn = () => {
             })
             .catch( error => console.log(error))
     }
-    
-    const handleGithubSignIn = () => {
-        githubSignIn()
-            .then(() => {
 
-                Swal.fire({
-                    icon: "success",
-                    title: "Success...",
-                    text: "Sign In Successful!!!",
-                    
-                  });
-
-                navigate(location?.state ? location.state : '/');
-            })
-            .catch( error => console.log(error))
-    }
 
 
     return (
@@ -122,10 +107,6 @@ const SignIn = () => {
 
                         <div className="px-8 mb-4">
                             <button onClick={handleGoogleSignIn} className="btn btn-outline w-full ">Google</button>
-                        </div>
-
-                        <div className="px-8">
-                            <button onClick={handleGithubSignIn} className="btn btn-outline w-full ">Github</button>
                         </div>
 
                         <div className="text-center mb-2">

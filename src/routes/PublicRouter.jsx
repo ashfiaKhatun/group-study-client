@@ -5,8 +5,13 @@ import {
 import ErrorPage from "../components/pages/ErrorPage";
 import Root from "../layout/Root";
 import Home from "../components/pages/Home/Home";
-// import SignIn from "../components/pages/SignIn/SignIn";
-// import SignUp from "../components/pages/SignUp/SignUp";
+import SignIn from "../components/pages/SignIn/SignIn";
+import SignUp from "../components/pages/SignUp/SignUp";
+import AllAssignments from "../components/pages/AllAssignments/AllAssignments";
+import CreateAssignment from "../components/pages/CreateAssignment/CreateAssignment";
+import MyAssignmentList from "../components/pages/MyAssignmentList/MyAssignmentList";
+import PendingAssignments from "../components/pages/PendingAssignments/PendingAssignments";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
     {
@@ -18,14 +23,30 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Home></Home>
             },
-            // {
-            //     path: '/signin',
-            //     element: <SignIn></SignIn>
-            // },
-            // {
-            //     path: '/signup',
-            //     element: <SignUp></SignUp>
-            // },
+            {
+                path: '/signin',
+                element: <SignIn></SignIn>
+            },
+            {
+                path: '/signup',
+                element: <SignUp></SignUp>
+            },
+            {
+                path: '/all-assignments',
+                element: <PrivateRouter><AllAssignments></AllAssignments></PrivateRouter>
+            },
+            {
+                path: '/add-assignment',
+                element: <PrivateRouter><CreateAssignment></CreateAssignment></PrivateRouter>
+            },
+            {
+                path: '/my-assignments',
+                element: <PrivateRouter><MyAssignmentList></MyAssignmentList></PrivateRouter>
+            },
+            {
+                path: '/pending-assignments',
+                element: <PrivateRouter><PendingAssignments></PendingAssignments></PrivateRouter>
+            },
             
         ]
     },

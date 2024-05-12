@@ -35,13 +35,13 @@ const Navbar = () => {
 
     const navList = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/allItems'>Art & craft Items</NavLink></li>
+        <li><NavLink to='/all-assignments'>All Assignments</NavLink></li>
 
         {
             user &&
             <>
-                <li><NavLink to='/add-craft-item'>Add Craft Item</NavLink></li>
-                <li><NavLink to={`/my-craft-list/email/${user.email}`}>My Art&Craft List</NavLink></li>
+                <li><NavLink to='/add-assignment'>Add Assignment</NavLink></li>
+                <li><NavLink to={`/my-assignments`}>My Art&Assignment List</NavLink></li>
             </>
 
         }
