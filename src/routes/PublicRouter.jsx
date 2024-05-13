@@ -12,6 +12,7 @@ import CreateAssignment from "../components/pages/CreateAssignment/CreateAssignm
 import MyAssignmentList from "../components/pages/MyAssignmentList/MyAssignmentList";
 import PendingAssignments from "../components/pages/PendingAssignments/PendingAssignments";
 import PrivateRouter from "./PrivateRouter";
+import UpdateAssignment from "../components/pages/AllAssignments/UpdateAssignment";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
             {
                 path: '/add-assignment',
                 element: <PrivateRouter><CreateAssignment></CreateAssignment></PrivateRouter>
+            },
+            {
+                path: '//update-assignment/:id',
+                element: <PrivateRouter><UpdateAssignment></UpdateAssignment></PrivateRouter>,
+                loader: ({params}) => fetch(`http://localhost:5000/all-assignments/${params.id}`)
             },
             {
                 path: '/my-assignments',
