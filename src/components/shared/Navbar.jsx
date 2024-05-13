@@ -65,7 +65,7 @@ const Navbar = () => {
                         {navList}
                     </ul>
                 </div>
-                <a className="btn btn-ghost font-bold text-xl"><span className="text-cyan-800">Connect</span> Students</a>
+                <img src="https://i.ibb.co/YXg5Cv8/image.png" className="md:w-40 h-8 md:h-12 lg:ml-16 rounded-xl" alt="" />
             </div>
 
             <div className="navbar-center hidden md:flex">

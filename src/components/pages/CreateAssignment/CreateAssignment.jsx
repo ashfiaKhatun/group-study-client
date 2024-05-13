@@ -48,8 +48,8 @@ const CreateAssignment = () => {
             <Helmet>
                 <title>Add Assignment</title>
             </Helmet>
-            <h2 className="text-3xl font-extrabold my-6 ml-20">Add Assignment</h2>
-            <div className="px-4 md:px-20">
+            <h2 className="text-xl md:text-3xl font-extrabold my-6 text-center">Add Assignment</h2>
+            <div className="px-4 md:px-20 mb-12">
                 <form onSubmit={handleAddAssignment}>
                     <div className="grid md:grid-cols-2 gap-4 form-control rounded-xl p-4 md:p-20 bg-[#f4f3f0]">
                         {/* title */}
@@ -92,7 +92,7 @@ const CreateAssignment = () => {
 
 
                         <div className="lg:col-span-2">
-                            <input type="submit" value="Add Assignment" className="border btn border-black rounded-md w-full bg-[#D2B48C] hover:bg-[#a58c6c] hover:text-white py-2 font-bold cursor-pointer" />
+                            <input type="submit" value="Add Assignment" className=" btn rounded-md w-full bg-cyan-800 hover:bg-cyan-950 text-white py-2 font-bold cursor-pointer" />
                         </div>
                     </div>
                 </form>

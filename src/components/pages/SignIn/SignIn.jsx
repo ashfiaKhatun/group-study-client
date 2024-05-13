@@ -60,13 +60,13 @@ const SignIn = () => {
             <Helmet>
                 <title>Sign In</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col">
-                    <div className="text-center mb-6">
-                        <h1 className="text-5xl font-bold">Sign In now!</h1>
+            <div className=" min-h-screen bg-base-200">
+                <div className="mx-auto flex-col py-12 px-4">
+                    <div className="mb-6">
+                        <h1 className="text-2xl md:text-5xl text-center font-bold">Sign In now!</h1>
 
                     </div>
-                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card w-full md:w-1/3 mx-auto shadow-2xl bg-base-100">
                         <form className="card-body" onSubmit={submitSignIn}>
                             <div className="form-control">
                                 <label className="label">
@@ -100,12 +100,12 @@ const SignIn = () => {
                                 </label>
                             </div>
 
-                            <div className="form-control mt-6">
+                            <div className="form-control">
                                 <button className="btn bg-cyan-800 hover:bg-cyan-950 text-white">Sign In</button>
                             </div>
                         </form>
 
-                        <div className="px-8 mb-4">
+                        <div className="px-8">
                             <button onClick={handleGoogleSignIn} className="btn btn-outline w-full ">Google</button>
                         </div>
 
