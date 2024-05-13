@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const CreateAssignment = () => {
 
@@ -18,6 +19,26 @@ const CreateAssignment = () => {
             difficulty,
             photo
         };
+
+
+        fetch('http://localhost:5000/all-assignments', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newAssignment)
+        })
+            .then(res => res.json())
+            .then(() => {
+                Swal.fire({
+                    title: "Success",
+                    text: "Assignment Added Successfully",
+                    icon: "success"
+                });
+            })
+
+
+        form.reset();
 
     }
 
