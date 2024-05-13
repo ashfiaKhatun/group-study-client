@@ -65,7 +65,7 @@ const Navbar = () => {
                         {navList}
                     </ul>
                 </div>
-                <a className="btn btn-ghost font-bold text-xl"><span className="text-cyan-800">Crafty</span> Corner</a>
+                <a className="btn btn-ghost font-bold text-xl"><span className="text-cyan-800">Connect</span> Students</a>
             </div>
 
             <div className="navbar-center hidden md:flex">
