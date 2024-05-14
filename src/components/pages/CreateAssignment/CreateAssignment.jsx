@@ -1,7 +1,19 @@
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
+
 const CreateAssignment = () => {
+
+    const [startDate, setStartDate] = useState(new Date());
+
+    const {user} = useContext(AuthContext);
+
+
 
     const handleAddAssignment = event => {
         event.preventDefault();
@@ -9,15 +21,18 @@ const CreateAssignment = () => {
         const title = form.title.value;
         const description = form.description.value;
         const marks = form.marks.value;
-        const difficulty = form.difficulty.value;
+        const difficulty = form.difficulty.value;   
         const photo = form.photo.value;
+        const email = user?.email;
 
         const newAssignment = {
             title,
             description,
             marks,
             difficulty,
-            photo
+            startDate,
+            photo,
+            email
         };
 
 
@@ -52,6 +67,7 @@ const CreateAssignment = () => {
             <div className="px-4 md:px-20 mb-12">
                 <form onSubmit={handleAddAssignment}>
                     <div className="grid md:grid-cols-2 gap-4 form-control rounded-xl p-4 md:p-20 bg-[#f4f3f0]">
+                        
                         {/* title */}
                         <div>
                             <label className="label-text text-base">Title</label>
@@ -83,9 +99,16 @@ const CreateAssignment = () => {
                         </div>
 
 
+                        {/* date */}
+                        <div className="">
+                            <label className="label-text text-base">Due Date</label>
+                            <div>
+                                <DatePicker className="input w-full mt-2" selected={startDate} onChange={(date) => setStartDate(date)}  />
+                            </div>
+                        </div>
 
                         {/* photo url */}
-                        <div className="lg:col-span-2">
+                        <div className="">
                             <label className="label-text text-base">Photo URL</label>
                             <input type="text" name="photo" placeholder="Photo URL" className="input w-full mt-2" />
                         </div>

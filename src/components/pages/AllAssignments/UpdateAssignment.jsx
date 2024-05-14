@@ -1,8 +1,17 @@
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import { useState } from "react";
+
 const UpdateAssignment = () => {
+
+    const [updateDate, setUpdateDate] = useState(new Date());
+
+    const navigate = useNavigate();
 
     const loadedData = useLoaderData();
 
@@ -29,6 +38,7 @@ const UpdateAssignment = () => {
             description,
             marks,
             difficulty,
+            updateDate,
             photo
         };
 
@@ -47,6 +57,7 @@ const UpdateAssignment = () => {
                     text: "Assignment Updated Successfully",
                     icon: "success"
                 });
+                navigate('/all-assignments');
             })
     }
 
@@ -90,9 +101,16 @@ const UpdateAssignment = () => {
                         </div>
 
 
+                        {/* date */}
+                        <div className="">
+                            <label className="label-text text-base">Due Date</label>
+                            <div>
+                                <DatePicker className="input w-full mt-2" selected={updateDate} onChange={(date) => setUpdateDate(date)} />
+                            </div>
+                        </div>
 
                         {/* photo url */}
-                        <div className="lg:col-span-2">
+                        <div className="">
                             <label className="label-text text-base">Photo URL</label>
                             <input type="text" name="photo" defaultValue={photo} placeholder="Photo URL" className="input w-full mt-2" />
                         </div>
