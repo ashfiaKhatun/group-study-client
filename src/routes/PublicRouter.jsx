@@ -44,12 +44,12 @@ const router = createBrowserRouter([
             {
                 path: '/update-assignment/:id',
                 element: <PrivateRouter><UpdateAssignment></UpdateAssignment></PrivateRouter>,
-                loader: ({params}) => fetch(`http://localhost:5000/all-assignments/${params.id}`)
+                loader: ({params}) => fetch(`https://group-study-server-three.vercel.app/all-assignments/${params.id}`)
             },
             {
                 path: '/view-assignment/:id',
                 element: <PrivateRouter><ViewDetails></ViewDetails></PrivateRouter>,
-                loader: ({params}) => fetch(`http://localhost:5000/all-assignments/${params.id}`)
+                loader: ({params}) => fetch(`https://group-study-server-three.vercel.app/all-assignments/${params.id}`)
             },
             {
                 path: '/my-assignments',
