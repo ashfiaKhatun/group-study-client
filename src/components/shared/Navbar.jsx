@@ -65,7 +65,7 @@ const Navbar = () => {
                         {navList}
                     </ul>
                 </div>
-                <img src="https://i.ibb.co/YXg5Cv8/image.png" className="md:w-40 h-8 md:h-12 lg:ml-16 rounded-xl" alt="" />
+                <a href="/"><img src="https://i.ibb.co/YXg5Cv8/image.png" className="md:w-40 h-8 md:h-12 lg:ml-16 rounded-xl" alt="" /></a>
             </div>
 
             <div className="navbar-center hidden md:flex">
