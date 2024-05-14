@@ -1,22 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import PropTypes from 'prop-types';
 
-const AssignmentCard = ({ assignment, assignments, setAssignments }) => {
+const AssignmentCard = (params) => {
 
-  const [userEmail, setUserEmail] = useState(null);
+  const { assignment, assignments, setAssignments } = params;
 
   const { user } = useContext(AuthContext);
 
 
   const { _id, email, title, marks, difficulty, photo } = assignment;
 
-  useEffect(() => {
-    fetch(`https://group-study-server-three.vercel.app/all-assignments/email/${email}`)
-      .then(res => res.json())
-      .then(data => setUserEmail(data))
-  }, [email])
+  
 
   const handleDelete = () => {
 
@@ -66,7 +63,7 @@ const AssignmentCard = ({ assignment, assignments, setAssignments }) => {
 
         <hr />
         <p className="text-gray-700 "><b>Marks:</b> {marks}</p>
-        <p className="text-gray-700 "><b>Difficulty Level:</b> {difficulty} days</p>
+        <p className="text-gray-700 "><b>Difficulty Level:</b> {difficulty}</p>
 
         <div className="card-actions">
           <Link to={`/view-assignment/${_id}`}><button className="py-1 px-6 rounded-full bg-gray-300 border-cyan-800 hover:bg-cyan-800 hover:text-white text-cyan-800 font-bold">View</button></Link>
@@ -79,5 +76,9 @@ const AssignmentCard = ({ assignment, assignments, setAssignments }) => {
     </div>
   );
 };
+
+AssignmentCard.propTypes = {
+  params:PropTypes.object
+}
 
 export default AssignmentCard;
