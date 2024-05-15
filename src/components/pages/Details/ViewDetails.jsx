@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const ViewDetails = () => {
 
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const loadedData = useLoaderData();
 
@@ -16,6 +17,42 @@ const ViewDetails = () => {
         startDate,
         photo
     } = loadedData
+
+    const handleSubmitAssignment = e => {
+        e.preventDefault();
+        const form = e.target;
+        const link = form.link.value;
+        const note = form.note.value;
+        const email = form.email.value;
+        const status = form.status.value;
+        const user_name = user.displayName;
+
+        const submittedAssignment = {
+            title, marks, link, note, email, status, user_name
+        }
+
+        fetch('https://group-study-server-three.vercel.app/all-submitted-assignments', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(submittedAssignment)
+        })
+        .then(res => res.json())
+        .then( () => {
+            Swal.fire({
+                title: "Success",
+                text: "Assignment Submitted Successfully",
+                icon: "success"
+            });
+        })
+
+    }
+
+    const closeModal = () => {
+        const modal = document.getElementById('my_modal_1');
+        modal.close();
+    }
 
 
     return (
@@ -38,24 +75,39 @@ const ViewDetails = () => {
             {/* Open the modal using document.getElementById('ID').showModal() method */}
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
+                    <form method="dialog">
+                        {/* if there is a button in form, it will close the modal */}
+                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
                     <h3 className="font-bold text-lg">Fill the form</h3>
-                    <form>
-                        <label className="label-text text-base">File link</label>
-                        <input type="text" name="title" placeholder="Title" className="input  w-full mt-2" />
-                        
-                        <label className="label-text text-base">Title</label>
-                        <textarea name="" id="" className="input w-full mt-2"></textarea>
+                    <form onSubmit={handleSubmitAssignment} className="space-y-4">
 
-                        <label className="label-text text-base">User Email</label>
-                        <input type="email" name="user_email" readOnly defaultValue={user.email} className="input  w-full mt-2" />
+                        <div>
+                            <label className="label-text text-base">File link</label>
+                            <input type="text" name="link" placeholder="File Link" className="input input-bordered w-full mt-2" />
+                        </div>
+
+                        <div>
+                            <label className="label-text text-base">Note</label>
+                            <textarea name="note" placeholder="Quick Note" className="border rounded-lg px-4 py-1 w-full"></textarea>
+                        </div>
+
+                        <div>
+                            <label className="label-text text-base">Status</label>
+                            <input type="text" name="status" defaultValue='Pending' readOnly className="input input-bordered w-full mt-2" />
+                        </div>
+
+                        <div>
+                            <label className="label-text text-base">Email</label>
+                            <input type="text" name="email" defaultValue={user.email} readOnly className="input input-bordered w-full mt-2" />
+                        </div>
+                        
+                        <div>
+                            <input onClick={closeModal} type="submit" value="Submit Assignment" className=" btn rounded-md w-full bg-cyan-800 hover:bg-cyan-950 text-white py-2 font-bold cursor-pointer" />
+                        </div>
 
                     </form>
-                    <div className="modal-action">
-                        <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Close</button>
-                        </form>
-                    </div>
+
                 </div>
             </dialog>
         </div>
