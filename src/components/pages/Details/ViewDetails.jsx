@@ -47,6 +47,8 @@ const ViewDetails = () => {
             });
         })
 
+        form.reset();
+
     }
 
     const closeModal = () => {

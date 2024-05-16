@@ -14,6 +14,7 @@ import PendingAssignments from "../components/pages/PendingAssignments/PendingAs
 import PrivateRouter from "./PrivateRouter";
 import UpdateAssignment from "../components/pages/AllAssignments/UpdateAssignment";
 import ViewDetails from "../components/pages/Details/ViewDetails";
+import PendingAssignmentMarks from "../components/pages/PendingAssignments/PendingAssignmentMarks";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,13 @@ const router = createBrowserRouter([
                 path: '/pending-assignments',
                 element: <PrivateRouter><PendingAssignments></PendingAssignments></PrivateRouter>
             },
+            {
+                path: '/pending-assignments-marks/:id',
+                element: <PrivateRouter><PendingAssignmentMarks></PendingAssignmentMarks></PrivateRouter>,
+                // loader: ({params})=> fetch(`https://group-study-server-three.vercel.app/all-submitted-assignments/${params.id}`),
+                loader: ({params})=> fetch(`https://group-study-server-three.vercel.app/all-submitted-assignments/${params.id}`)
+            },
+
             
         ]
     },
