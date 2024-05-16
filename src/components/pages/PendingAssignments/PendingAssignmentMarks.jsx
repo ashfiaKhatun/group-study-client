@@ -56,12 +56,12 @@ const PendingAssignmentMarks = () => {
                     <form onSubmit={handleMarksSubmit}>
                         <div>
                             <label className="label-text font-bold">Mark</label>
-                            <input type="text" name="mark"placeholder="Mark"className="input  w-full mt-2" />
+                            <input type="text" name="marksInput"placeholder="Mark"className="input  w-full mt-2" />
                         </div>
 
                         <div>
                             <label className="label-text font-bold">Feedback</label>
-                            <input type="text" name="feedback" placeholder="Feedback" className="input w-full mt-2" />
+                            <input type="text" name="feedBack" placeholder="Feedback" className="input w-full mt-2" />
                         </div>
                     </form>
 
