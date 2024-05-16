@@ -24,7 +24,7 @@ const ViewDetails = () => {
         const link = form.link.value;
         const note = form.note.value;
         const email = form.email.value;
-        const status = form.status.value;
+        let status = form.status.value;
         const user_name = user.displayName;
 
         const submittedAssignment = {

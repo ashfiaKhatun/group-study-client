@@ -53,8 +53,9 @@ const router = createBrowserRouter([
                 loader: ({params}) => fetch(`https://group-study-server-three.vercel.app/all-assignments/${params.id}`)
             },
             {
-                path: '/my-assignments',
-                element: <PrivateRouter><MyAssignmentList></MyAssignmentList></PrivateRouter>
+                path: '/my-assignments/email/:email',
+                element: <PrivateRouter><MyAssignmentList></MyAssignmentList></PrivateRouter>,
+                loader: ({params}) => fetch(`https://group-study-server-three.vercel.app/all-submitted-assignments/email/${params.email}`)
             },
             {
                 path: '/pending-assignments',

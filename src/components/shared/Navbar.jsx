@@ -41,7 +41,7 @@ const Navbar = () => {
             user &&
             <>
                 <li><NavLink to='/add-assignment'>Add Assignment</NavLink></li>
-                <li><NavLink to={`/my-assignments`}>My Assignment List</NavLink></li>
+                <li><NavLink to={`/my-assignments/email/${user.email}`}>My Assignment List</NavLink></li>
                 <li><NavLink to={`/pending-assignments`}>Pending Assignment List</NavLink></li>
             </>
 

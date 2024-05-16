@@ -5,21 +5,24 @@ const PendingAssignmentMarks = () => {
 
     const loader = useLoaderData();
 
+    const { _id, link, note } = loader;
 
-    const { link, note } = loader;
-
+        
     const handleMarksSubmit = e =>{
         e.preventDefault();
-
+        
         const form = e.target;
-
+        
         const marksInput = form.marksInput.value;
         const feedBack = form.feedBack.value;
+        const status = form.status.value;
+        
+    
 
-        const sendFeedBack = { marksInput, feedBack};
+        const sendFeedBack = { marksInput, feedBack, status };
 
-        fetch('https://group-study-server-three.vercel.app/all-assignments', {
-            method: 'POST',
+        fetch(`https://group-study-server-three.vercel.app/all-submitted-assignments/${_id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -29,17 +32,14 @@ const PendingAssignmentMarks = () => {
             .then(() => {
                 Swal.fire({
                     title: "Success",
-                    text: "FeedBack provided Successfully",
+                    text: "Marks Updated Successfully",
                     icon: "success"
                 });
             })
 
-
-
-
         form.reset();
+   
     }
-
 
 
     return (
@@ -63,6 +63,13 @@ const PendingAssignmentMarks = () => {
                             <label className="label-text font-bold">Feedback</label>
                             <input type="text" name="feedBack" placeholder="Feedback" className="input w-full mt-2" />
                         </div>
+
+                        <input type="text" name="status" defaultValue="Completed" hidden  />
+
+                        <div>
+                            <input type="submit" value="Submit" className=" btn rounded-md w-full bg-cyan-800 hover:bg-cyan-950 text-white py-2 font-bold cursor-pointer" />
+                        </div>
+
                     </form>
 
 
